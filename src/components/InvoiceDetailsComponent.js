@@ -157,6 +157,16 @@ function InvoiceDetailsComponent({invoices, setInvoices}) {
                 <Button onClick={handleAddBS}>Add</Button>
             </DialogActions>
             </Dialog>
+            <br/>
+            <FormLabel htmlFor="totalAmount">Total Amount</FormLabel>
+            <br/>
+            <TextField 
+            id="totalAmount" 
+            type="number" 
+            onChange={(e) => setInvoice({...invoice, totalAmount: e.target.value})}
+            />
+            <br/>
+            <Button variant="contained" onClick={handleSubmit}>Submit</Button>
             </FormControl>
             </div>
         )
