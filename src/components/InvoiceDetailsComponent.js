@@ -7,7 +7,6 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
 
 function InvoiceDetailsComponent({invoices, setInvoices}) {
     const params = useParams().id;
@@ -52,7 +51,11 @@ function InvoiceDetailsComponent({invoices, setInvoices}) {
             alert('You must add at least one item.');
             return;
         }
-
+        setInvoices([...invoices, {
+            ...invoice,
+            Items: items,
+            BillSundrys: billSundrys
+        }]);
     };
 
     if (params === '0') {
@@ -133,7 +136,7 @@ function InvoiceDetailsComponent({invoices, setInvoices}) {
             <br/>
             <FormLabel htmlFor="billSundrys">Bill Sundries</FormLabel>
             <br/>
-            <Button variant="outlined">
+            <Button variant="outlined" onClick={handleClickOpenBS}>
             Add Bill Sundry
             </Button>
             <Dialog open={openBS} onClose={handleCloseBS}>
